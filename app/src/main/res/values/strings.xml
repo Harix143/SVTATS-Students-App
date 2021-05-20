@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Login_Screen</string>
+    <string name="logo_name"><b>TrackX</b></string>
+    <string name="Aogo_name">A Safe School Van for your Child</string>
+    <string name="login"><b>LOGIN</b></string>
+    <string name="enter_phone_number"> Enter your Phone Number</string>
+    <string name="enter_password"> Enter Password</string>
+    <string name="forget_password"><u>Forget Password?</u></string>
+    <string name="remember_me">Remember Me</string>
+    <string name="create_acc"><b>Create Account</b></string>
+    <string name="create_account"><u><b>Create Account</b></u></string>
+    <string name="full_name"> Enter Full Name</string>
+    <string name="email"> Enter Your Email Address</string>
+    <string name="address"> Enter your Home Full Address</string>
+    <string name="institute_Name"> Enter Your Institute Address</string>
+    <string name="next_btn"> NEXT</string>
+
+
+    <string name="otp_code"><b>code</b></string>
+    <string name="otp_verify"><b>Verification</b></string>
+    <string name="otp_desc">Enter one time code sent on your phone No.</string>
+
+    <string name="forget_password_txt"><b>Forget Password</b></string>
+    <string name="new_credentials"><b>New Credentials</b></string>
+    <string name="password_updated"><b>Password Updated</b></string>
+    <string name="forget_password_desc">Provide your Accounts Phone_No for which you want to reset your password</string>
+    <string name="make_selection_desc">Select which contact detail should we use to reset your password</string>
+    <string name="new_credentials_desc">Your Identity has been verified!<br />Set your new Password</string>
+    <string name="password_update_desc">Your Password has been updated!</string>
+    <string name="vis_sms">Via SMS: </string>
+    <string name="vis_email">Via Email: </string>
+
+
+    <string name="signUp"><b>SignUp</b></string>
+    <string name="title_activity_maps">Map</string>
+
+</resources>
