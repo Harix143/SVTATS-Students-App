@@ -14,7 +14,6 @@ import java.util.regex.Pattern
 class ForgetPassword : AppCompatActivity() {
 
     var ph_number: TextInputLayout? = null
-
     var progressBar: RelativeLayout? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -26,12 +26,10 @@ class SetNewPassword : AppCompatActivity() {
         new_password = findViewById((R.id.new_password))
         conf_password = findViewById((R.id.confirm_password))
         progressBar = findViewById((R.id.np_progress_bar))
-
     }
 
     fun setNewPasswordBtn(view: View) {
-        if(!validateNewPassword() || !checkSame())
-        {
+        if (!validateNewPassword() || !checkSame()) {
             return
         }
 
@@ -44,9 +42,6 @@ class SetNewPassword : AppCompatActivity() {
         database.child(Phone_No!!).child("password").setValue(new_pass)
 
 
-
-
-
         val intent = Intent(applicationContext, ForgetPasswordSuccessMessage::class.java)
 
         startActivity(intent)
@@ -55,15 +50,15 @@ class SetNewPassword : AppCompatActivity() {
     }
 
 
-
     fun callBack(view: View) {
         val intent = Intent(applicationContext, Login::class.java)
 
         startActivity(intent)
+        finish()
     }
 
 
-    private fun validateNewPassword():Boolean {
+    private fun validateNewPassword(): Boolean {
         val `val` = new_password!!.getEditText()!!.getText().toString().trim()
         val conf_pass = conf_password!!.getEditText()!!.getText().toString().trim()
 
@@ -75,40 +70,30 @@ class SetNewPassword : AppCompatActivity() {
         matcher = pattern.matcher(`val`)
 
         // return matcher.matches()
-        if (`val`.isEmpty())
-        {
+        if (`val`.isEmpty()) {
             new_password!!.setError("Field can not be empty")
             return false
-        }
-        else if (!matcher.matches())
-        {
+        } else if (!matcher.matches()) {
             new_password!!.setError("Invalid Password Format!")
             return false
-        }
-        else if (`val`.length < 9)
-        {
+        } else if (`val`.length < 9) {
             new_password!!.setError("Password should contain atleast 8 characters!")
             return false
-        }
-        else
-        {
+        } else {
             new_password!!.setError(null)
             new_password!!.setErrorEnabled(false)
             return true
         }
     }
-    private fun checkSame():Boolean {
+
+    private fun checkSame(): Boolean {
         val `val` = conf_password!!.getEditText()!!.getText().toString().trim()
         val new_pass = new_password!!.getEditText()!!.getText().toString().trim()
 
-        if (!`val`.equals(new_pass))
-        {
+        if (!`val`.equals(new_pass)) {
             conf_password!!.setError("Password Must be Same!!!")
             return false
-        }
-
-        else
-        {
+        } else {
             conf_password!!.setError(null)
             conf_password!!.setErrorEnabled(false)
             return true

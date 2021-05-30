@@ -4,54 +4,72 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignUp2ndClass"
     android:background="@color/colorPrimary"
-    android:padding="30dp">
+    tools:context=".SignUp2ndClass">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="10dp">
+        android:orientation="vertical">
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@drawable/layout"
 
-            <ImageView
-                android:layout_width="55dp"
-                android:layout_height="60dp"
-                android:id="@+id/signup_back_button"
-                android:padding="5dp"
-                android:transitionName="transition_back_button"
-                android:src="@drawable/general_back_btn" />
-            <Button
-                android:layout_width="55dp"
-                android:layout_height="60dp"
-                android:background="@color/material_on_surface_stroke"
-                android:onClick="callBack">
+            android:orientation="vertical">
 
-            </Button>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-        </RelativeLayout>
+                <ImageView
+                    android:id="@+id/signup_back_button"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_baseline_arrow_back_24"
+                    android:transitionName="transition_back_button" />
 
-        <TextView
-            android:id="@+id/signup_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:text="@string/create_acc"
-            android:textAllCaps="true"
-            android:textColor="@color/black"
-            android:textSize="40sp"
-            android:transitionName="transition_crrate_button"/>
+                <Button
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/material_on_surface_stroke"
+                    android:onClick="callBack">
+
+                </Button>
+
+            </RelativeLayout>
+
+
+            <TextView
+                android:id="@+id/signup_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:text="@string/create_acc"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="40sp"
+                android:transitionName="transition_crrate_button" />
+
+
+        </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
             android:orientation="vertical"
-            android:layout_marginTop="30dp">
+            android:padding="25dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -66,18 +84,25 @@
                 android:id="@+id/Gender"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:layout_gravity="center">
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Male" />
+                    android:text="Male"
+                    android:textColor="@color/black"
+                    android:buttonTint="@color/black"
+                    android:textColorHint="@color/black" />
 
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Female" />
+                    android:text="Female"
+                    android:textColor="@color/black"
+                    android:buttonTint="@color/black"
+                    android:textColorHint="@color/black" />
 
 
             </RadioGroup>
@@ -85,9 +110,9 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:background="@color/black"
                 android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp">
+                android:layout_marginBottom="20dp"
+                android:background="@color/black">
 
             </View>
 
@@ -104,29 +129,39 @@
                 android:id="@+id/Age"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:datePickerMode="spinner"
                 android:calendarViewShown="false"
-                android:spinnersShown="true">
+                android:datePickerMode="spinner"
+                android:spinnersShown="true"
+                android:theme="@style/MyDatePicker"
+
+                >
 
             </DatePicker>
 
 
         </LinearLayout>
 
-        <Button
-            android:id="@+id/next1_btn"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/next_btn"
-            android:background="@color/black"
-            android:textColor="@color/white"
-            android:layout_marginTop="25dp"
-            android:onClick="callNextScreen"
-            android:elevation="5dp"
-            android:textSize="18dp"
-            android:transitionName="transition_next_button">
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp">
 
-        </Button>
+            <Button
+                android:id="@+id/next1_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:background="@color/black"
+                android:elevation="5dp"
+                android:onClick="callNextScreen"
+                android:text="@string/next_btn"
+                android:textColor="@color/white"
+                android:textSize="18dp"
+                android:transitionName="transition_next_button">
+
+            </Button>
+        </LinearLayout>
 
     </LinearLayout>
 </ScrollView>

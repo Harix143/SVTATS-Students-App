@@ -1,11 +1,14 @@
 package com.example.login_screen
 
 import android.content.Intent
+import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.SpannableStringBuilder
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.text.bold
 import com.chaos.view.PinView
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.FirebaseException
@@ -25,8 +28,9 @@ class FPVerifyOTP : AppCompatActivity() {
 
         Title = findViewById((R.id.fpverify_desc))
         pinFromUser = findViewById(R.id.pin_view)
-        Title!!.text = "Enter one time code sent on your phone No: "+Phone_No
         Phone_No = intent.getStringExtra("phone") ?: ""
+        Title!!.text = "Enter one time code sent on your phone No: " + Phone_No
+        //Title!!.setTextColor(resources.getColor(R.color.colorPrimary))
 
         sendVerificationCodeToUser(Phone_No!!)
 
@@ -54,7 +58,10 @@ class FPVerifyOTP : AppCompatActivity() {
 
     private val mCallbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks =
         object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
-            override fun onCodeSent(s: String, forceResendingToken: PhoneAuthProvider.ForceResendingToken) {
+            override fun onCodeSent(
+                s: String,
+                forceResendingToken: PhoneAuthProvider.ForceResendingToken
+            ) {
                 super.onCodeSent(s, forceResendingToken)
                 codeBySystem = s
             }
@@ -110,6 +117,10 @@ class FPVerifyOTP : AppCompatActivity() {
         val intent = Intent(applicationContext, Login::class.java)
 
         startActivity(intent)
+        finish()
+    }
+    fun callResendPIN(view: View) {
+        sendVerificationCodeToUser(Phone_No!!)
     }
 
 

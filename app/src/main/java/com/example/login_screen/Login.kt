@@ -1,19 +1,29 @@
 package com.example.login_screen
 
+import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import android.os.Bundle
+import android.provider.Settings
 import android.view.View
+import android.widget.CheckBox
 import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.database.*
+import java.util.HashMap
 
 class Login : AppCompatActivity() {
 
     var phone_No: TextInputLayout? = null
     var password: TextInputLayout? = null
     var progressBar: RelativeLayout? = null
+    var phone_No_EditText: TextInputEditText? = null
+    var password_EditText: TextInputEditText? = null
+    var rememberMe: CheckBox? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,43 +31,40 @@ class Login : AppCompatActivity() {
         phone_No = findViewById((R.id.login_phone_number))
         password = findViewById((R.id.login_password))
         progressBar = findViewById((R.id.login_progress_bar))
+        rememberMe = findViewById((R.id.rememberMe))
+        phone_No_EditText = findViewById((R.id.login_phone_No_editTExt))
+        password_EditText = findViewById((R.id.login_password_editTExt))
+
+        val sessionManager = SessionManager(this@Login, SessionManager.SESSION_REMEMBERME)
+        if (sessionManager.checkRememberMe()) {
+            val rememberMeDetails: HashMap<String, String> =
+                sessionManager.getRememberMeDetailFromSession()
+            phone_No_EditText!!.setText(rememberMeDetails.get(SessionManager.KEY_SESSIONPHONE_NO))
+            password_EditText!!.setText(rememberMeDetails.get(SessionManager.KEY_SESSIONPASSWORD))
+        }
 
     }
 
 
     fun callForgetPassword(view: View) {
         val intent = Intent(applicationContext, ForgetPassword::class.java)
-
         startActivity(intent)
     }
 
 
-//    fun letTheUserLoggedIn(view: View?) {
-//    }
-//
-//
-//        public void callLOginScreen(View View) {
-//            Intent intent = new Intent(getApplicationContext(), Login.class);
-//            Pair[] pairs = new Pair[1];
-//            pairs[0] = new Pair<android.view.View, String>(findViewById(R.id.letTheUserLogIn), "transition_Login");
-//
-//            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(Login.this, pairs);
-//            startActivity(intent, options.toBundle());
-//        }
-
-
     fun letTheUserLoggedIn(view: View?) {
-//        if (!isConnected(this)) {
+//        if (!isConnected(this@Login)) {
 //            showCustomDialog()
 //        }
 
         if (!validateFields()) {
             return
-        }
+         }
         progressBar!!.visibility = View.VISIBLE
 
         var _id: Int = 0;
         var _phone = phone_No!!.editText!!.text.toString().trim { it <= ' ' }
+        var _phone2 = phone_No!!.editText!!.text.toString().trim { it <= ' ' }
         if (_phone.get(0) == '0') {
             _phone = _phone.substring(1)
         }
@@ -65,6 +72,13 @@ class Login : AppCompatActivity() {
 
         var _password = password!!.editText!!.text.toString().trim { it <= ' ' }
 
+        if (rememberMe!!.isChecked) {
+            val sessionManager = SessionManager(this@Login, SessionManager.SESSION_REMEMBERME)
+            sessionManager.createRememberMeSession(
+                _phone2,
+                _password
+            )
+        }
 
         //DatabaseQuery
         val checkUser: Query =
@@ -76,16 +90,47 @@ class Login : AppCompatActivity() {
                     phone_No!!.error = null
                     phone_No!!.isErrorEnabled
                     var systemPassword = snapshot.child(_phone).child("password").getValue(
-                        String::class.java)
+                        String::class.java
+                    )
 
                     if (_password.equals(systemPassword)) {
                         progressBar!!.visibility = View.VISIBLE
                         password!!.isErrorEnabled
                         password!!.error = null
-                        val name = snapshot.child(_phone).child("fullName").getValue(
-                            String::class.java
+                        var name =
+                            snapshot.child(_phone).child("fullName").getValue(String::class.java)
+                        var email =
+                            snapshot.child(_phone).child("email").getValue(String::class.java)
+                        var hAddress =
+                            snapshot.child(_phone).child("haddress").getValue(String::class.java)
+                        var iAddress =
+                            snapshot.child(_phone).child("iaddress").getValue(String::class.java)
+                        var age = snapshot.child(_phone).child("age").getValue(String::class.java)
+                        var gender =
+                            snapshot.child(_phone).child("gender").getValue(String::class.java)
+                        var phone_number =
+                            snapshot.child(_phone).child("phone_No").getValue(String::class.java)
+                        var password =
+                            snapshot.child(_phone).child("password").getValue(String::class.java)
+
+                        //create a Session
+                        val sessionManager =
+                            SessionManager(this@Login, SessionManager.SESSION_USERSESSION)
+                        sessionManager.createLoginSession(
+                            name,
+                            email,
+                            hAddress,
+                            iAddress,
+                            age,
+                            gender,
+                            phone_number,
+                            password
                         )
+
                         Toast.makeText(this@Login, "Welocome $name", Toast.LENGTH_SHORT).show();
+                        val intent = Intent(applicationContext, DashBoard::class.java)
+                        startActivity(intent)
+                        finish()
 
                     } else {
 
@@ -107,7 +152,25 @@ class Login : AppCompatActivity() {
         })
     }
 
+//    if ((wifiConn != null && wifiConn.isConnected()) || (mobConn != null && mobConn.isConnected())) {
+//        return true
+//    } else {
+//
+//        return false
+//    }
 
+
+//    private fun isConnected(login: Login): Boolean {
+//        var connectivityManager: ConnectivityManager =
+//            login.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+//        var wifiConn: NetworkInfo? =
+//            connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI)
+//        var mobConn: NetworkInfo? =
+//            connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE)
+//
+//        return (wifiConn != null && wifiConn.isConnected()) || (mobConn != null && mobConn.isConnected())
+//    }
+//
 //    private fun showCustomDialog() {
 //        val builder = android.app.AlertDialog.Builder(this@Login)
 //        builder.setMessage("Please Connect to the Internet to Proceed Further!!!")
@@ -121,23 +184,6 @@ class Login : AppCompatActivity() {
 //                val intent = Intent(this@Login, MainActivity::class.java)
 //                startActivity(intent)
 //            }
-//    }
-
-
-//    private fun isConnected(login: Login): Boolean {
-//        var connectivityManager: ConnectivityManager =
-//            login.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-//        var wifiConn: NetworkInfo? =
-//            connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI)
-//        var mobConn: NetworkInfo? =
-//            connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE)
-//
-//        if ((wifiConn != null && wifiConn.isConnected()) || (mobConn != null && mobConn.isConnected())) {
-//            return true
-//        } else {
-//
-//            return false
-//        }
 //    }
 
 
@@ -168,8 +214,7 @@ class Login : AppCompatActivity() {
     }
 
     fun callBack(view: View) {
-        val intent = Intent(applicationContext, MainActivity::class.java)
-
+        val intent = Intent(applicationContext, MakeUserSelection::class.java)
         startActivity(intent)
     }
 }

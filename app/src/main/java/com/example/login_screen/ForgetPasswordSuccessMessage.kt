@@ -15,10 +15,14 @@ class ForgetPasswordSuccessMessage : AppCompatActivity() {
         val intent = Intent(applicationContext, Login::class.java)
 
         startActivity(intent)
+        finish()
+
     }
     fun callBack(view: View) {
         val intent = Intent(applicationContext, Login::class.java)
 
         startActivity(intent)
+        finish()
+
     }
 }

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.login_screen">
-
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -16,7 +15,37 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Login_Screen">
+        <activity android:name=".ChildAdd1"></activity>
+        <activity android:name=".Parent_DashBoard" />
+        <activity android:name=".ViewDriver" />
+        <activity android:name=".Fees" />
+        <activity android:name=".TrackVan" />
+        <activity android:name=".Schedule" />
+        <activity android:name=".Attendance" />
+        <activity android:name=".PreDashBoard" />
+        <activity android:name=".ViewExistingComplaints" />
+        <activity android:name=".P_Add_Complaint" />
+        <activity android:name=".P_Complaints" />
+        <activity android:name=".Add_Complaint" />
+        <activity android:name=".Complaints" />
+        <activity android:name=".DashBoard" />
+        <activity android:name=".Parent_FP_SuccessMessage" />
+        <activity android:name=".Parent_SetNewPassword" />
+        <activity android:name=".Parent_FPVerifyOTP" />
+        <activity android:name=".Parent_ForgetPassword" />
+        <activity android:name=".Parent_Verify_OTP" />
+        <activity android:name=".Parent_Signup2" />
+        <activity android:name=".Parent_Signup" />
+        <activity android:name=".Parent_login" />
+        <activity android:name=".Parent_MainActivity" />
+        <activity android:name=".Splash_Screen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".MakeUserSelection" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -28,10 +57,13 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
 
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
+            android:label="@string/title_activity_maps" />
         <activity android:name=".FPVerifyOTP" />
         <activity android:name=".ForgetPasswordSuccessMessage" />
         <activity android:name=".SetNewPassword" />
@@ -43,11 +75,13 @@
         <activity android:name=".Signup" />
         <activity android:name=".Login" />
         <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
     </application>
 

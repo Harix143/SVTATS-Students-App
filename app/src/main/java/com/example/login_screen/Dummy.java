@@ -11,16 +11,24 @@
 //import android.provider.Settings;
 //import android.util.Pair;
 //import android.view.View;
+//import android.view.animation.Animation;
+//import android.view.animation.AnimationUtils;
 //import android.widget.*;
 //import android.widget.ImageView;
 //
 //import androidx.annotation.NonNull;
+//import androidx.appcompat.app.ActionBarDrawerToggle;
 //import androidx.arch.core.executor.TaskExecutor;
+//import androidx.core.view.GravityCompat;
+//import androidx.drawerlayout.widget.DrawerLayout;
+//import androidx.recyclerview.widget.LinearLayoutManager;
+//import androidx.recyclerview.widget.RecyclerView;
 //
 //import com.chaos.view.PinView;
 //import com.google.android.gms.tasks.OnCompleteListener;
 //import com.google.android.gms.tasks.Task;
 //import com.google.android.gms.tasks.TaskExecutors;
+//import com.google.android.material.navigation.NavigationView;
 //import com.google.android.material.textfield.TextInputLayout;
 //import com.google.firebase.FirebaseException;
 //import com.google.firebase.auth.AuthResult;
@@ -39,11 +47,15 @@
 //
 //import org.jetbrains.annotations.NotNull;
 //
+//import java.util.ArrayList;
 //import java.util.Calendar;
+//import java.util.HashMap;
 //import java.util.concurrent.Executor;
 //import java.util.concurrent.TimeUnit;
+//import java.util.logging.Handler;
+//import java.util.logging.LogRecord;
 //
-//public class Dummy {
+//public class Dummy extends Activity implements NavigationView.OnNavigationItemSelectedListener {
 //
 //    ImageView backbtn;
 //    Button nextBtn;
@@ -61,16 +73,59 @@
 //    String getAge;
 //    String getGender;
 //    RelativeLayout progressBar;
+//    CheckBox rememberMe;
 //
 //    DatePicker datePicker;
 //    String codeBySystem;
 //
+//    Animation topAnim;
+//    Animation bottomAnim;
+//    ImageView image;
+//    TextView logo, slogan;
+//
+//    DrawerLayout drawerLayout;
+//    NavigationView navView;
+//    androidx.appcompat.widget.Toolbar toolBar;
+//    RecyclerView rv;
+//
+//    private static int SPASH_SCREEN = 5000;
 //
 //    TextInputLayout fullName, email, hAddress, iAddress, password;
 //
+//    ChildAdapterClass adapter;
 //
 //    public void callLOginScreen(View View) {
+//
+//        rv.setLayoutManager(new LinearLayoutManager(this));
+//        adapter = new ChildAdapterClass(dataQueue());
+//        rv.setAdapter(adapter);
+//
+//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolBar, R.string.navogation_drawer_open, R.string.navogation_drawer_closed);
+//        drawerLayout.addDrawerListener(toggle);
+//        toggle.syncState();
+//
+//
+//        logo.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                logo.getContext().startActivity(new Intent(logo.getContext(), DashBoard.class));
+//            }
+//        });
+//        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+//            drawerLayout.closeDrawer(GravityCompat.START);
+//        } else {
+//        }
+//
+//        navView.setNavigationItemSelectedListener((NavigationView.OnNavigationItemSelectedListener) this);
+//
+//
 //        ProgressDialog mProgressDialog = new ProgressDialog(this);
+//
+//        topAnim = AnimationUtils.loadAnimation(this, R.anim.top_animation);
+//        bottomAnim = AnimationUtils.loadAnimation(this, R.anim.bottom_animation);
+//        image = findViewById(R.id.imageView);
+//        logo = findViewById(R.id.textView1);
+//        slogan = findViewById(R.id.textView2);
 //
 //        mProgressDialog.setMessage("Work ...");
 //        mProgressDialog.show();
@@ -81,18 +136,63 @@
 //        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 //
 //        ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(Login.this, pairs);
-//        startActivity(intent, options.toBundle());
-//  }
+//
+//        final Handler handler = new Handler();
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                //Write whatever to want to do after delay specified (1 sec)
+//
+//            }
+//        }, 1000);
+//
+//        final Runnable r = new Runnable() {
+//            public void run() {
+//                handler.postDelayed(this, 1000);
+//            }
+//        };
+//
+//        new android.os.Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                Intent intent = new Intent(getApplicationContext(), Login.class);
+//
+//            }
+//        }, SPASH_SCREEN);
+//
+//        if (rememberMe.isChecked()) {
+//            SessionManager sessionManager = new SessionManager(Dummy.this);
+//            HashMap<String, String> userDetails = sessionManager.getUserDetailFromSession();
+//            String fullName = userDetails.get(SessionManager.KEY_NAME);
+//
+//        }
+//
+//
+//    }
+//
+//    public ArrayList<ChildModel> dataQueue() {
+//        ArrayList<ChildModel> holder = new ArrayList<>();
+//        ChildModel cm = new ChildModel();
+//        cm.setImg(R.drawable.profile);
+//
+//        cm.setHeader("  jjhj");
+//        cm.setDesc("dded");
+//        holder.add(cm);
+//        return  holder;
+//
+//    }
+//
 //
 //    public void callNextScreen(View view) {
-//        if(!isConnected(this))
-//        {
+//        if (!isConnected(this)) {
 //            showCustomDialog();
 //        }
 //
 //        if (!validateFields()) {
 //            return;
 //        }
+//
+//
 //        progressBar.setVisibility(view.VISIBLE);
 //        progressBar.setVisibility(view.GONE);
 //
@@ -106,29 +206,26 @@
 //            @Override
 //            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
 //
-//                    if(snapshot.exists())
-//                    {
-//                        String systemPassword = snapshot.child("phone_No").getValue(String.class);
-//                        email.setError(null);
-//                        email.isErrorEnabled();
-//                        password.isErrorEnabled();
-//                        password.setError(null);
-//                        ;
-//                    }
+//                if (snapshot.exists()) {
+//                    String systemPassword = snapshot.child("phone_No").getValue(String.class);
+//                    email.setError(null);
+//                    email.isErrorEnabled();
+//                    password.isErrorEnabled();
+//                    password.setError(null);
+//                    ;
+//                }
 //
 //
 //            }
 //
 //            @Override
 //            public void onCancelled(@NonNull @NotNull DatabaseError error) {
-//               // Toast.makeText(, error.getMessage(), Toast.LENGTH_SHORT).show();
+//                // Toast.makeText(, error.getMessage(), Toast.LENGTH_SHORT).show();
 //            }
 //        });
 //
 //
-//
 //    }
-//
 //
 //
 ////    private boolean isConnected(Dummy dummy) {
@@ -327,39 +424,42 @@
 //    }
 //
 //
-//
 //    //DatabaseQuery
-//    val checkUser: Query = FirebaseDatabase.getInstance().getReference("Students")
-//        checkUser.addValueEventListener(object : ValueEventListener {
-//        override fun onDataChange(snapshot: DataSnapshot) {
+//    val checkUser:Query =FirebaseDatabase.getInstance().
+//
+//    getReference("Students")
+//        checkUser.addValueEventListener(object :
+//
+//    ValueEventListener {
+//        override fun onDataChange(snapshot:DataSnapshot){
 //            for (studentDS in snapshot.children) {
-//                var obj = studentDS.getValue(StudentDBHelperClass::class.java)
-//                println(obj!!.password);
-//                if (_phone.equals(obj!!.phone_No) && _password == obj!!.password) {
+//                var obj = studentDS.getValue(StudentDBHelperClass:: class.java)
+//                println(obj !!.password);
+//                if (_phone.equals(obj !!.phone_No) &&_password == obj !!.password){
 //                    _id++
 //                    var uid = FirebaseAuth.getInstance().currentUser
-//                    var userId = uid?.getUid()
+//                    var userId = uid ?.getUid()
 //
 //                    println(uid)
-//                    progressBar!!.visibility = View.VISIBLE
-//                    phone_No!!.error = null
-//                    phone_No!!.isErrorEnabled
-//                    password!!.isErrorEnabled
-//                    password!!.error = null
-//                    var name: String? = obj!!.fullName
-//                    Toast.makeText(this@Login, "Welocome " + name, Toast.LENGTH_SHORT).show();
+//                    progressBar !!.visibility = View.VISIBLE
+//                    phone_No !!.error = null
+//                    phone_No !!.isErrorEnabled
+//                    password !!.isErrorEnabled
+//                    password !!.error = null
+//                    var name:String ? = obj !!.fullName
+//                    Toast.makeText(this @Login,"Welocome " + name, Toast.LENGTH_SHORT).show();
 //                    break
 //                }
 //            }
 //            if (_id != 1) {
-//                progressBar!!.visibility = View.GONE
-//                Toast.makeText(this@Login, "Wrong Credentials", Toast.LENGTH_SHORT).show();
+//                progressBar !!.visibility = View.GONE
+//                Toast.makeText(this @Login,"Wrong Credentials", Toast.LENGTH_SHORT).show();
 //            }
 //        }
 //
-//        override fun onCancelled(error: DatabaseError) {
-//            progressBar!!.visibility = View.GONE
-//            Toast.makeText(this@Login, error.getMessage(), Toast.LENGTH_SHORT).show();
+//        override fun onCancelled(error:DatabaseError){
+//            progressBar !!.visibility = View.GONE
+//            Toast.makeText(this @Login,error.getMessage(), Toast.LENGTH_SHORT).show();
 //        }
 //    })
 //

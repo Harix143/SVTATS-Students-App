@@ -18,6 +18,7 @@ class Signup : AppCompatActivity() {
     var nextBtn: Button? = null
     var Title: TextView? = null
     var progressBar: RelativeLayout? = null
+    var scrollView: ScrollView? = null
 
 
     //For Validation Purpose
@@ -44,6 +45,8 @@ class Signup : AppCompatActivity() {
         hAddress = findViewById((R.id.home_address))
         iAddress = findViewById((R.id.insti_address))
         password = findViewById((R.id.password))
+        scrollView = findViewById((R.id.sign_up_ScrollView))
+
 
         val checkUser: Query = FirebaseDatabase.getInstance().getReference("Students")
         checkUser.addValueEventListener(object : ValueEventListener {
@@ -54,12 +57,11 @@ class Signup : AppCompatActivity() {
                     //progressBar!!.visibility = View.VISIBLE
                     var obj = studentDS.getValue(StudentDBHelperClass::class.java)
                     email_arrayList.add(obj!!.email)
-                    println(obj!!.email)
                 }
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Toast.makeText(this@Signup, error.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(this@Signup, error.message, Toast.LENGTH_SHORT).show();
             }
         })
 
@@ -114,8 +116,7 @@ class Signup : AppCompatActivity() {
 
 
         for (email in email_arrayList) {
-            if(`val`.equals(email, ignoreCase = true))
-            {
+            if (`val`.equals(email, ignoreCase = true)) {
                 _id++
                 break
             }
@@ -202,6 +203,10 @@ class Signup : AppCompatActivity() {
 
         startActivity(intent)
     }
+
+//    fun scrollDown(view: View) {
+//        scrollView!!.fullScroll(ScrollView.FOCUS_DOWN)
+//    }
 
 
 }
