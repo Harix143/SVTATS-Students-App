@@ -13,11 +13,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
+
 public class ChildViewHolderJava extends RecyclerView.ViewHolder {
 
     ImageView img;
     TextView tv1, tv2;
     CardView cardView;
+
 
     public ChildViewHolderJava(@NonNull @NotNull View itemView) {
         super(itemView);
@@ -26,13 +29,16 @@ public class ChildViewHolderJava extends RecyclerView.ViewHolder {
         tv2 = (TextView) itemView.findViewById(R.id.srtv2);
         cardView = (CardView) itemView.findViewById(R.id.cardView);
 
-        itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Handel yout event here;
-//                itemView.getContext().startActivity(new Intent(itemView.getContext(), DashBoard.class));
-            }
-        });
+//        itemView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                // Handle yout event here;
+//                Intent i = new Intent(view.getContext(), DashBoard.class);
+//                i.putExtra("title", getAdapterPosition());
+//                view.getContext().startActivity(i);
+////                itemView.getContext().startActivity(new Intent(itemView.getContext(), DashBoard.class));
+//            }
+//        });
     }
 
 

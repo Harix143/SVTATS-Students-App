@@ -11,10 +11,10 @@
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_View"
-        android:background="@color/lightWhite"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        android:background="@color/lightWhite"
         app:headerLayout="@layout/header"
         app:menu="@menu/main_menu">
 
@@ -76,6 +76,18 @@
                 app:layout_constraintTop_toBottomOf="@+id/toolbar"
                 app:srcCompat="@drawable/profile" />
 
+            <ProgressBar
+                android:id="@+id/dashboard_progress_bar"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/linearLayout2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/linearLayout">
+
+            </ProgressBar>
+
             <LinearLayout
                 android:id="@+id/linearLayout"
                 android:layout_width="0dp"
@@ -131,8 +143,8 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
-                    app:cardCornerRadius="20dp"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    app:cardCornerRadius="20dp">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -156,6 +168,7 @@
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="15dp"
                             app:srcCompat="@drawable/attendance2" />
+
                         <Button
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -182,8 +195,8 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
-                    app:cardCornerRadius="20dp"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    app:cardCornerRadius="20dp">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -207,6 +220,7 @@
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="15dp"
                             app:srcCompat="@drawable/tr1" />
+
                         <Button
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -222,8 +236,8 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
-                    app:cardCornerRadius="20dp"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    app:cardCornerRadius="20dp">
 
 
                     <RelativeLayout
@@ -249,6 +263,7 @@
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="15dp"
                             app:srcCompat="@drawable/cash" />
+
                         <Button
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -274,8 +289,8 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
-                    app:cardCornerRadius="20dp"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    app:cardCornerRadius="20dp">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -299,6 +314,7 @@
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="15dp"
                             app:srcCompat="@drawable/review" />
+
                         <Button
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -338,6 +354,7 @@
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="15dp"
                             app:srcCompat="@drawable/driver" />
+
                         <Button
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"

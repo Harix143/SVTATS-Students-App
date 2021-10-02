@@ -64,6 +64,22 @@ class Signup : AppCompatActivity() {
                 Toast.makeText(this@Signup, error.message, Toast.LENGTH_SHORT).show();
             }
         })
+        val checkUser2: Query = FirebaseDatabase.getInstance().getReference("Parents")
+        checkUser2.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+
+                for (studentDS in snapshot.children) {
+
+                    //progressBar!!.visibility = View.VISIBLE
+                    var obj = studentDS.getValue(ParentDBHelperClass::class.java)
+                    email_arrayList.add(obj!!.email)
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(this@Signup, error.message, Toast.LENGTH_SHORT).show();
+            }
+        })
 
 
     }
@@ -119,6 +135,8 @@ class Signup : AppCompatActivity() {
             if (`val`.equals(email, ignoreCase = true)) {
                 _id++
                 break
+            } else {
+                _id = 0
             }
         }
 

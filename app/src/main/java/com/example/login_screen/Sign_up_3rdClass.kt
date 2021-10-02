@@ -60,7 +60,25 @@ class Sign_up_3rdClass : AppCompatActivity() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Toast.makeText(this@Sign_up_3rdClass, error.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(this@Sign_up_3rdClass, error.getMessage(), Toast.LENGTH_SHORT)
+                    .show();
+            }
+        })
+        val checkUser2: Query = FirebaseDatabase.getInstance().getReference("Parents")
+        checkUser2.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+
+                for (studentDS in snapshot.children) {
+
+                    //progressBar!!.visibility = View.VISIBLE
+                    var obj = studentDS.getValue(ParentDBHelperClass::class.java)
+                    phone_arrayList.add(obj!!.phone_No)
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(this@Sign_up_3rdClass, error.getMessage(), Toast.LENGTH_SHORT)
+                    .show();
             }
         })
     }
@@ -107,10 +125,11 @@ class Sign_up_3rdClass : AppCompatActivity() {
 
 
         for (phone in phone_arrayList) {
-            if(`val`.equals(phone))
-            {
+            if (`val`.equals(phone)) {
                 _id++
                 break
+            } else {
+                _id = 0
             }
         }
 

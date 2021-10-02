@@ -56,7 +56,7 @@ class Parent_DashBoard : AppCompatActivity() {
                     cm.setHeader(obj!!.fullName)
                     cm.setDesc("Click to view the Child DashBoard.")
                     holder.add(cm)
-                    adapter = ChildAdapterClass(holder)
+                    adapter = ChildAdapterClass(holder, applicationContext)
                     recyclerView!!.setAdapter(adapter)
                 }
 

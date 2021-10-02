@@ -1,6 +1,7 @@
 package com.example.login_screen
 
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.SpannableStringBuilder
@@ -8,7 +9,9 @@ import android.text.method.ScrollingMovementMethod
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.text.backgroundColor
 import androidx.core.text.bold
+import androidx.core.text.color
 import androidx.core.text.italic
 import com.google.firebase.database.*
 import java.util.HashMap
@@ -58,17 +61,10 @@ class ViewExistingComplaints : AppCompatActivity() {
                             .append(obj!!.date)
                             .bold { append("\n" + "Status: ") }
                             .bold { italic { append(obj!!.status) } }
+                            .bold { append("\n" + "Feeback: ") }
+                            .color(Color.GREEN) { append(obj!!.feedback) }
                             .append("\n\n_____________________________________" + "\n\n")
                         complaints!!.append(s)
-
-//                        complaints!!.append(
-//                            "Complaint No: " + id +
-//                                    "\n\nTitle: " + obj!!.title
-//                                    + "\nDescription: " + obj!!.description
-//                                    + "\nDate: " + obj!!.date
-//                                    + "\nStatus: " + obj!!.status
-//                                    + "\n\n_____________________________________" + "\n\n"
-//                        )
                     }
                 }
             }

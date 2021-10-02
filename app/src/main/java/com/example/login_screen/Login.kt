@@ -1,11 +1,7 @@
 package com.example.login_screen
 
-import android.content.Context
 import android.content.Intent
-import android.net.ConnectivityManager
-import android.net.NetworkInfo
 import android.os.Bundle
-import android.provider.Settings
 import android.view.View
 import android.widget.CheckBox
 import android.widget.RelativeLayout
@@ -14,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.database.*
-import java.util.HashMap
+import java.util.*
 
 class Login : AppCompatActivity() {
 
@@ -32,6 +28,7 @@ class Login : AppCompatActivity() {
         password = findViewById((R.id.login_password))
         progressBar = findViewById((R.id.login_progress_bar))
         rememberMe = findViewById((R.id.rememberMe))
+        phone_No_EditText = findViewById((R.id.login_phone_No_editTExt))
         phone_No_EditText = findViewById((R.id.login_phone_No_editTExt))
         password_EditText = findViewById((R.id.login_password_editTExt))
 
@@ -59,7 +56,7 @@ class Login : AppCompatActivity() {
 
         if (!validateFields()) {
             return
-         }
+        }
         progressBar!!.visibility = View.VISIBLE
 
         var _id: Int = 0;
@@ -129,6 +126,8 @@ class Login : AppCompatActivity() {
 
                         Toast.makeText(this@Login, "Welocome $name", Toast.LENGTH_SHORT).show();
                         val intent = Intent(applicationContext, DashBoard::class.java)
+                        intent.putExtra("ind", "fromStdClass")
+//                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                         startActivity(intent)
                         finish()
 

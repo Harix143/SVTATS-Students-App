@@ -1,11 +1,10 @@
 package com.example.login_screen
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
-import android.widget.CheckBox
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.button.MaterialButton
 
 class Complaints : AppCompatActivity() {
@@ -30,8 +29,8 @@ class Complaints : AppCompatActivity() {
     }
 
     fun callBack(view: View) {
-        val intent = Intent(applicationContext, DashBoard::class.java)
-        startActivity(intent)
+//        val intent = Intent(applicationContext, DashBoard::class.java)
+//        startActivity(intent)
         finish()
     }
 }

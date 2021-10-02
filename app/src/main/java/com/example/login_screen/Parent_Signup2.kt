@@ -52,6 +52,24 @@ class Parent_Signup2 : AppCompatActivity() {
                     phone_arrayList.add(obj!!.phone_No)
                 }
             }
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(this@Parent_Signup2, error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        })
+
+        val checkUser2: Query = FirebaseDatabase.getInstance().getReference("Students")
+        checkUser2.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+
+                for (studentDS in snapshot.children) {
+
+                    //progressBar!!.visibility = View.VISIBLE
+                    var obj = studentDS.getValue(StudentDBHelperClass::class.java)
+                    phone_arrayList.add(obj!!.phone_No)
+                }
+            }
+
             override fun onCancelled(error: DatabaseError) {
                 Toast.makeText(this@Parent_Signup2, error.getMessage(), Toast.LENGTH_SHORT).show();
             }
@@ -97,10 +115,11 @@ class Parent_Signup2 : AppCompatActivity() {
 
 
         for (phone in phone_arrayList) {
-            if(`val`.equals(phone))
-            {
+            if (`val`.equals(phone)) {
                 _id++
                 break
+            } else {
+                _id = 0
             }
         }
 
