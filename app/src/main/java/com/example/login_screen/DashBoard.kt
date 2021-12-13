@@ -30,6 +30,8 @@ class DashBoard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
     var toolBar: androidx.appcompat.widget.Toolbar? = null
     var cname: String? = null
     var ind: String? = null
+    var ind_a: String = "n"
+    var driver_phone_No: String? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,6 +41,9 @@ class DashBoard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
         cname = intent.getStringExtra("Name")
         ind = intent.getStringExtra("ind")
         println(title)
+
+
+
 
         //Hooks
         progressBar = findViewById((R.id.dashboard_progress_bar))
@@ -73,6 +78,8 @@ class DashBoard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
         val fullName = userDetails[SessionManager.KEY_NAME]
         val Phone_No = userDetails[SessionManager.KEY_PHONE_NO]
 
+        toggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.white));
+
         navView!!.setCheckedItem(R.id.nav_home)
 
         if (ind.equals("fromChildClass")) {
@@ -87,6 +94,27 @@ class DashBoard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
 
         progressBar!!.visibility = View.GONE
         navView!!.setNavigationItemSelectedListener(this)
+
+
+        val checkUser: Query =
+            FirebaseDatabase.getInstance().getReference("Students").child(Phone_No!!)
+                .child("Driver")
+        checkUser.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    driver_phone_No = snapshot.getValue(String::class.java)
+                    println("Driver_Phone_No: "+driver_phone_No)
+
+                } else {
+                   ind_a = "no"
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(this@DashBoard, error.getMessage(), Toast.LENGTH_SHORT)
+                    .show();
+            }
+        })
 
 
     }
@@ -161,12 +189,14 @@ class DashBoard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
     }
 
     fun callSchdule(view: View) {
-        val intent = Intent(applicationContext, Schedule::class.java)
+        val intent = Intent(applicationContext, Student_Schedule::class.java)
         startActivity(intent)
     }
 
     fun callTrackVan(view: View) {
-        val intent = Intent(applicationContext, TrackVan::class.java)
+        val intent = Intent(applicationContext, TrackingActivity::class.java)
+        intent.putExtra("driver",driver_phone_No)
+        intent.putExtra("inda",ind_a)
         startActivity(intent)
     }
 
@@ -183,22 +213,38 @@ class DashBoard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.nav_home -> Toast.makeText(this, "Home Button", Toast.LENGTH_SHORT).show()
-            R.id.nav_notif -> Toast.makeText(
-                this,
-                "Notification Button",
-                Toast.LENGTH_SHORT
-            ).show()
-            R.id.nav_setting -> Toast.makeText(this, "Setting Button", Toast.LENGTH_SHORT)
-                .show()
-            R.id.nav_rateus -> Toast.makeText(this, "Rate Us Button", Toast.LENGTH_SHORT)
-                .show()
-            R.id.nav_rateDriver -> Toast.makeText(
-                this,
-                "Rate Driver Button",
-                Toast.LENGTH_SHORT
-            )
-                .show()
-            R.id.nav_help -> Toast.makeText(this, "Help Button", Toast.LENGTH_SHORT).show()
+//            R.id.nav_notif -> Toast.makeText(
+//                this,
+//                "Notification Button",
+//                Toast.LENGTH_SHORT
+//            ).show()
+            R.id.nav_setting ->
+            {
+                ind = intent.getStringExtra("ind")
+                if (ind.equals("fromChildClass")) {
+                    val intent = Intent(applicationContext, Settings::class.java)
+                    intent.putExtra("ind","fromChildClass")
+                    startActivity(intent)
+                }
+                else
+                {
+                    val intent = Intent(applicationContext, Settings::class.java)
+                    startActivity(intent)
+                }
+
+            }
+            R.id.nav_rateus ->
+            {
+                val intent = Intent(applicationContext, RateUS::class.java)
+                startActivity(intent)
+            }
+//            R.id.nav_rateDriver -> Toast.makeText(
+//                this,
+//                "Rate Driver Button",
+//                Toast.LENGTH_SHORT
+//            )
+//                .show()
+//            R.id.nav_help -> Toast.makeText(this, "Help Button", Toast.LENGTH_SHORT).show()
             R.id.nav_logout -> {
                 Toast.makeText(this, "Logging Out", Toast.LENGTH_SHORT).show()
                 val sessionManager =
@@ -207,6 +253,13 @@ class DashBoard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
                 val sessionManager2 =
                     SessionManager(this@DashBoard, SessionManager.SESSION_REMEMBERME)
                 sessionManager2.logoutUserFromSession()
+
+                val psessionManager =
+                    ParentSessionManager(this@DashBoard, ParentSessionManager.PSESSION_USERSESSION)
+                psessionManager.logoutUserFromSession()
+                val psessionManager2 =
+                    ParentSessionManager(this@DashBoard, ParentSessionManager.PSESSION_REMEMBERME)
+                psessionManager2.logoutUserFromSession()
 
                 val intent = Intent(applicationContext, MakeUserSelection::class.java)
                 startActivity(intent)

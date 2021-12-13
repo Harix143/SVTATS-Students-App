@@ -8,7 +8,12 @@ public class StudentDBHelperClass(
     var password: String? = null,
     val age: String? = null,
     val gender: String? = null,
-    val phone_No: String? = null
+    val phone_No: String? = null,
+    val fee: String? = null,
+    val ilat: String? = null,
+    val ilon: String? = null,
+    val hlat: String? = null,
+    val hlon: String? = null,
 ) {
 
 }

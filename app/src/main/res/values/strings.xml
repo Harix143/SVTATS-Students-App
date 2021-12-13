@@ -23,11 +23,39 @@
     <string name="address"> Enter your Home Full Address</string>
     <string name="institute_Name"> Enter Your Institute Address</string>
     <string name="next_btn"> NEXT</string>
+    <string name="driver"><b>DRIVER</b></string>
+    <string name="schedule"><b>SCHEDULE</b></string>
+    <string name="create_schedule"><b>CREATE SCHEDULE</b></string>
+    <string name="view_schedule"><b>VIEW SCHEDULE</b></string>
+    <string name="fee_status"><b>CHECK FEE STATUS</b></string>
+    <string name="leave_schedule"><b>MARK LEAVE</b></string>
+    <string name="schedule_save"><b>SAVE</b></string>
+    <string name="schedule_days"><b>DAYS</b></string>
+    <string name="schedule_PICKUP"><b>PICKUP TIME</b></string>
+    <string name="DROPOFF"><b>DROPOFF TIME</b></string>
+    <string name="rate_us"><b>Rate Us</b></string>
+    <string name="Date"><b>Date</b></string>
+    <string name="fees"><b>FEE PAYMENT</b></string>
+    <string name="LEAVE"><b>LEAVE</b></string>
+    <string name="submit_rating"><b>SUBMIT</b></string>
+    <string name="sugg"> Enter any Suggesstions (if Have) </string>
+    <string name="ateendance"><b>ATTENDANCE</b></string>
+    <string name="pateendance"><b>Pickup Attendance</b></string>
+    <string name="dateendance"><b>Dropoff Attendance</b></string>
+    <string name="schedule_info"><i>*Click on the Pickup and Droppoff time to edit it.</i></string>
+    <string name="fee_info">Total Fees for a Month is: <b><u>3000 PKR</u></b>.</string>
+    <string name="leave_info"><i>*Click on the CheckBox to mark the Leave.</i></string>
+    <string name="att_info"><i>*<b>P</b> indicates present and <b>A</b> indicates Absent.</i></string>
+    <string name="call_driver"><b>CALL DRIVER</b></string>
     <string name="resendCode"><u><b>Resend Code</b></u></string>
     <string name="navogation_drawer_open">Open Navigation drawer</string>
     <string name="navogation_drawer_closed">Close Navigation drawer</string>
 
+    <string name="old_pass"> Current Password</string>
+    <string name="new_pass"> New Password</string>
+    <string name="change"><b>CHANGE</b></string>
 
+    <string name="con_pass"> Confirm Password</string>
     <string name="otp_code"><b>code</b></string>
     <string name="submit"><b>Submit</b></string>
     <string name="otp_verify"><b>Verification</b></string>
@@ -36,6 +64,8 @@
     <string name="forget_password_txt"><b>Forget Password</b></string>
     <string name="new_credentials"><b>New Credentials</b></string>
     <string name="Student_btn"><b>Student</b></string>
+    <string name="sett"><b>Settings</b></string>
+    <string name="chnge_pass"><b>Change Password</b></string>
     <string name="Parent_btn"><b>Parent</b></string>
     <string name="password_updated"><b>Password Updated</b></string>
     <string name="forget_password_desc">Provide your Accounts Phone_No for which you want to reset your password</string>
@@ -57,5 +87,6 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="title_activity_tracking">Map</string>
 
 </resources>

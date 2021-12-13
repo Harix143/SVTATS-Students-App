@@ -50,7 +50,7 @@ class ChildAdd1 : AppCompatActivity() {
         }
 
         radioButton = findViewById(radioGroup!!.checkedRadioButtonId)
-        val gender: String = " " + radioButton.text.toString();
+        val gender: String = radioButton.text.toString();
 
 
         val day = datePicker!!.dayOfMonth
@@ -71,9 +71,35 @@ class ChildAdd1 : AppCompatActivity() {
                 password,
                 date,
                 gender,
-                Phone_No
+                Phone_No,
+                "",
+                "33.652598",
+                "73.157236",
+                "33.673624",
+                "73.073063",
             )
             ref.child(Phone_No!!).child(getfName).setValue(addNewUser)
+        } catch (e: Exception) {
+            println(e.message)
+        }
+        try {
+            val ref = FirebaseDatabase.getInstance().getReference("Students")
+            val addNewUser = StudentDBHelperClass(
+                getfName,
+                email,
+                hAddress,
+                getIAddress,
+                password,
+                date,
+                gender,
+                Phone_No,
+                "false",
+                "33.652598",
+                "73.157236",
+                "33.673624",
+                "73.073063",
+            )
+            ref.child(Phone_No!!).setValue(addNewUser)
         } catch (e: Exception) {
             println(e.message)
         }

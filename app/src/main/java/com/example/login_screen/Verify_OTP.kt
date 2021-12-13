@@ -26,6 +26,7 @@ class Verify_OTP : AppCompatActivity() {
     var Dob: String? = ""
     var Gender: String? = ""
     var Phone_No: String? = ""
+    var fee: String? = "false"
 //    private lateinit var reference: DatabaseReference
 //    private lateinit var database: FirebaseDatabase
 
@@ -160,10 +161,19 @@ class Verify_OTP : AppCompatActivity() {
                 Password,
                 Dob,
                 Gender,
-                Phone_No
+                Phone_No,
+                fee,
+                "33.652598",
+                "73.157236",
+                "33.673624",
+                "73.073063",
             )
             //val id = ref.push().key
             ref.child(Phone_No!!).setValue(addNewUser)
+
+
+
+
         } catch (e: Exception) {
             println(e.message)
         }

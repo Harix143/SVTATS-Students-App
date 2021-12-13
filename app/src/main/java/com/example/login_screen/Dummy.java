@@ -1,13 +1,17 @@
 //package com.example.login_screen;
 //
+//import android.Manifest;
 //import android.app.Activity;
 //import android.app.ActivityOptions;
 //import android.app.AlertDialog;
 //import android.app.ProgressDialog;
+//import android.app.TimePickerDialog;
 //import android.content.Context;
 //import android.content.DialogInterface;
 //import android.content.Intent;
+//import android.content.pm.PackageManager;
 //import android.net.ConnectivityManager;
+//import android.net.Uri;
 //import android.provider.Settings;
 //import android.util.Pair;
 //import android.view.View;
@@ -19,12 +23,16 @@
 //import androidx.annotation.NonNull;
 //import androidx.appcompat.app.ActionBarDrawerToggle;
 //import androidx.arch.core.executor.TaskExecutor;
+//import androidx.core.app.ActivityCompat;
+//import androidx.core.content.ContextCompat;
 //import androidx.core.view.GravityCompat;
 //import androidx.drawerlayout.widget.DrawerLayout;
 //import androidx.recyclerview.widget.LinearLayoutManager;
 //import androidx.recyclerview.widget.RecyclerView;
 //
 //import com.chaos.view.PinView;
+//import com.google.android.gms.maps.model.LatLng;
+//import com.google.android.gms.maps.model.Marker;
 //import com.google.android.gms.tasks.OnCompleteListener;
 //import com.google.android.gms.tasks.Task;
 //import com.google.android.gms.tasks.TaskExecutors;
@@ -50,6 +58,7 @@
 //import java.util.ArrayList;
 //import java.util.Calendar;
 //import java.util.HashMap;
+//import java.util.Locale;
 //import java.util.concurrent.Executor;
 //import java.util.concurrent.TimeUnit;
 //import java.util.logging.Handler;
@@ -88,11 +97,61 @@
 //    androidx.appcompat.widget.Toolbar toolBar;
 //    RecyclerView rv;
 //
+//
+//    int hour, mint;
+//
 //    private static int SPASH_SCREEN = 5000;
+//    private static final int Request_Call = 1;
 //
 //    TextInputLayout fullName, email, hAddress, iAddress, password;
 //
 //    ChildAdapterClass adapter;
+//
+//    DriverLocation dl;
+//    Marker marker;
+//    double v1;
+//    double v2;
+//
+//
+//
+//    public void time_picker()
+//    {
+//        TimePickerDialog.OnTimeSetListener onTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
+//            @Override
+//            public void onTimeSet(TimePicker view, int selectedHour, int selectedMint) {
+//                hour = selectedHour;
+//                mint = selectedMint;
+//                nextBtn.setText(String.format(Locale.getDefault(), "%0.2d:%0.2d", hour, mint));
+//            }
+//        };
+//        TimePickerDialog timePickerDialog = new TimePickerDialog(this, onTimeSetListener,hour, mint, false);
+//    }
+//
+//    public void makePhoneCall()
+//    {
+//        if(_phone_No.trim().length() > 0)
+//        {
+//            if(ContextCompat.checkSelfPermission(, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED)
+//            {
+//                ActivityCompat.requestPermissions(,new String[]{Manifest.permission.CALL_PHONE}, Request_Call);
+//            }
+//            else
+//            {
+//                String dial = "tel:";
+//                startActivity(new Intent(Intent.ACTION_CALL, Uri.parse(dial)));
+//            }
+//
+//        }
+//        else
+//        {
+//            Toast.makeText(Verify_OTP.this, "No Phone Number", Toast.LENGTH_SHORT).show();
+//        }
+//    }
+//
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+//
+//    }
 //
 //    public void callLOginScreen(View View) {
 //
@@ -104,6 +163,7 @@
 //        drawerLayout.addDrawerListener(toggle);
 //        toggle.syncState();
 //
+//        marker.getPosition(new LatLng(dl.getLatitude(),dl.getLongitude()));
 //
 //        logo.setOnClickListener(new View.OnClickListener() {
 //            @Override

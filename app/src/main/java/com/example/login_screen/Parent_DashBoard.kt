@@ -66,7 +66,6 @@ class Parent_DashBoard : AppCompatActivity() {
                 Toast.makeText(this@Parent_DashBoard, error.message, Toast.LENGTH_SHORT).show();
             }
         })
-
     }
 
 

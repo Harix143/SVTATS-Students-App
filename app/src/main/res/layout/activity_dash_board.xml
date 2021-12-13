@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context=".DashBoard"
-    tools:openDrawer="start">
+    tools:openDrawer="">
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_View"
@@ -27,7 +27,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/lightWhite">
+            android:background="@drawable/layout_2">
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -39,6 +39,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:titleTextColor="@color/white"
                 app:navigationIcon="@drawable/ic_baseline_menu_24" />
 
             <TextView
@@ -49,6 +50,7 @@
                 android:layout_marginTop="24dp"
                 android:text=""
                 android:textSize="30sp"
+                android:textColor="@color/white"
                 app:fontFamily="@font/baloo"
                 app:layout_constraintEnd_toStartOf="@+id/imageView"
                 app:layout_constraintStart_toStartOf="parent"
@@ -61,6 +63,8 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
                 android:text="Dashboard"
+                android:textColor="@color/lightWhite"
+                android:textSize="20sp"
                 app:layout_constraintEnd_toStartOf="@+id/imageView"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -104,6 +108,7 @@
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
+                    app:cardElevation="5dp"
                     app:cardCornerRadius="20dp">
 
                     <RelativeLayout
@@ -118,8 +123,9 @@
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="10dp"
                             android:text="Schdule"
+                            android:textColor="@color/black"
                             android:textSize="24sp"
-                            app:fontFamily="@font/aclonica" />
+                            app:fontFamily="@font/roboto_medium" />
 
                         <ImageView
                             android:id="@+id/bus"
@@ -144,6 +150,7 @@
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
+                    app:cardElevation="5dp"
                     app:cardCornerRadius="20dp">
 
                     <RelativeLayout
@@ -159,7 +166,8 @@
                             android:layout_marginTop="10dp"
                             android:text="Attendance"
                             android:textSize="24sp"
-                            app:fontFamily="@font/aclonica" />
+                            android:textColor="@color/black"
+                            app:fontFamily="@font/roboto_medium" />
 
                         <ImageView
                             android:id="@+id/imageView3"
@@ -196,6 +204,7 @@
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
+                    app:cardElevation="5dp"
                     app:cardCornerRadius="20dp">
 
                     <RelativeLayout
@@ -210,8 +219,9 @@
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="10dp"
                             android:text="Track Van"
+                            android:textColor="@color/black"
                             android:textSize="24sp"
-                            app:fontFamily="@font/aclonica" />
+                            app:fontFamily="@font/roboto_medium" />
 
                         <ImageView
                             android:id="@+id/bus1"
@@ -237,6 +247,7 @@
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
+                    app:cardElevation="5dp"
                     app:cardCornerRadius="20dp">
 
 
@@ -254,7 +265,8 @@
                             android:layout_marginTop="10dp"
                             android:text="Fees"
                             android:textSize="24sp"
-                            app:fontFamily="@font/aclonica" />
+                            android:textColor="@color/black"
+                            app:fontFamily="@font/roboto_medium" />
 
                         <ImageView
                             android:id="@+id/train"
@@ -289,6 +301,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
+                    app:cardElevation="5dp"
                     android:layout_weight="1"
                     app:cardCornerRadius="20dp">
 
@@ -305,7 +318,8 @@
                             android:layout_marginTop="10dp"
                             android:text="Complaints"
                             android:textSize="24sp"
-                            app:fontFamily="@font/aclonica" />
+                            android:textColor="@color/black"
+                            app:fontFamily="@font/roboto_medium" />
 
                         <ImageView
                             android:id="@+id/cycle"
@@ -330,6 +344,7 @@
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
+                    app:cardElevation="5dp"
                     app:cardCornerRadius="20dp">
 
                     <RelativeLayout
@@ -345,7 +360,8 @@
                             android:layout_marginTop="10dp"
                             android:text="View Driver"
                             android:textSize="24sp"
-                            app:fontFamily="@font/aclonica" />
+                            android:textColor="@color/black"
+                            app:fontFamily="@font/roboto_medium" />
 
                         <ImageView
                             android:id="@+id/airplane"

@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".Mark_Leave">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:background="@drawable/layout"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/viewDriver_back_button"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_baseline_arrow_back_24"
+                    android:transitionName="transition_back_button" />
+
+                <Button
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/material_on_surface_stroke"
+                    android:onClick="callBack">
+
+                </Button>
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/schedule_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="11dp"
+                android:text="@string/leave_schedule"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                android:transitionName="transition_crrate_button" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="25dp">
+
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
+
+                <TableRow
+                    android:background="@color/blue">
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_width="0dp"
+                        android:text="@string/schedule_days"
+                        android:textColor="@color/white"
+                        android:padding="10dp"
+                        android:textSize="14sp"
+                        android:layout_weight="4"
+                        android:layout_gravity="center_horizontal">
+
+                    </TextView>
+
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_width="0dp"
+                        android:text="@string/LEAVE"
+                        android:textColor="@color/white"
+                        android:padding="10dp"
+                        android:textSize="14sp"
+                        android:layout_weight="4"
+                        android:layout_gravity="center_horizontal">
+
+                    </TextView>
+
+                </TableRow>
+                <TableRow>
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_width="0dp"
+                        android:text="Monday"
+                        android:textColor="@color/black"
+                        android:padding="10dp"
+                        android:textSize="14sp"
+                        android:layout_weight="4"
+                        android:layout_gravity="center_horizontal">
+
+                    </TextView>
+
+                    <CheckBox
+                        android:id="@+id/mon_lea"
+                        style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/black"
+                        android:checked="false"
+                        android:layout_weight="3"
+                        android:layout_gravity="center"
+                        android:textColor="@color/black" />
+                </TableRow>
+                <TableRow>
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_width="0dp"
+                        android:text="Tuesday"
+                        android:textColor="@color/black"
+                        android:padding="10dp"
+                        android:textSize="14sp"
+                        android:layout_weight="4"
+                        android:layout_gravity="center_horizontal">
+
+                    </TextView>
+
+
+                    <CheckBox
+                        android:id="@+id/tue_lea"
+                        style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/black"
+                        android:checked="false"
+                        android:layout_weight="3"
+                        android:layout_gravity="center"
+                        android:textColor="@color/black" />
+                </TableRow>
+                <TableRow>
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_width="0dp"
+                        android:text="Wednesday"
+                        android:textColor="@color/black"
+                        android:padding="10dp"
+                        android:textSize="14sp"
+                        android:layout_weight="4"
+                        android:layout_gravity="center_horizontal">
+
+                    </TextView>
+
+                    <CheckBox
+                        android:id="@+id/wed_lea"
+                        style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/black"
+                        android:checked="false"
+                        android:layout_weight="3"
+                        android:layout_gravity="center"
+                        android:textColor="@color/black" />
+                </TableRow>
+                <TableRow>
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_width="0dp"
+                        android:text="Thursday"
+                        android:textColor="@color/black"
+                        android:padding="10dp"
+                        android:textSize="14sp"
+                        android:layout_weight="4"
+                        android:layout_gravity="center_horizontal">
+
+                    </TextView>
+
+                    <CheckBox
+                        android:id="@+id/thu_lea"
+                        style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/black"
+                        android:checked="false"
+                        android:layout_weight="3"
+                        android:layout_gravity="center"
+                        android:textColor="@color/black" />
+                </TableRow>
+                <TableRow>
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_width="0dp"
+                        android:text="Friday"
+                        android:textColor="@color/black"
+                        android:padding="10dp"
+                        android:textSize="14sp"
+                        android:layout_weight="4"
+                        android:layout_gravity="center_horizontal">
+
+                    </TextView>
+
+                    <CheckBox
+                        android:id="@+id/fri_lea"
+                        style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/black"
+                        android:checked="false"
+                        android:layout_weight="3"
+                        android:layout_gravity="center"
+                        android:textColor="@color/black" />
+                </TableRow>
+                <TableRow>
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_width="0dp"
+                        android:text="Saturday"
+                        android:textColor="@color/black"
+                        android:padding="10dp"
+                        android:textSize="14sp"
+                        android:layout_weight="4"
+                        android:layout_gravity="center_horizontal">
+
+                    </TextView>
+
+                    <CheckBox
+                        android:id="@+id/sat_lea"
+                        style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/black"
+                        android:checked="false"
+                        android:layout_weight="3"
+                        android:layout_gravity="center"
+                        android:textColor="@color/black" />
+                </TableRow>
+
+            </TableLayout>
+
+            <TextView
+                android:id="@+id/info_schedule"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="@color/colorPrimary"
+                android:fontFamily="@font/open_sans"
+                android:text="@string/leave_info"
+                android:textColor="@color/grey"
+                android:textSize="12sp" />
+
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                android:background="@color/black">
+
+            </View>
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="2dp"
+                android:onClick="saveLeave"
+                android:text="@string/schedule_save"
+                android:textColor="@color/white"
+                android:textSize="17sp"
+                app:backgroundTint="#008000"
+                app:cornerRadius="16dp"
+                app:elevation="5dp"
+                app:icon="@drawable/ic_baseline_done_24"
+                app:iconGravity="textStart">
+
+            </com.google.android.material.button.MaterialButton>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</ScrollView>

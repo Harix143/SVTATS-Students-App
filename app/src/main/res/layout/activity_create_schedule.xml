@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".Create_Schedule">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:background="@drawable/layout"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/viewDriver_back_button"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_baseline_arrow_back_24"
+                    android:transitionName="transition_back_button" />
+
+                <Button
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/material_on_surface_stroke"
+                    android:onClick="callBack">
+
+                </Button>
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/create_schedule_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="11dp"
+                android:text="@string/create_schedule"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                android:transitionName="transition_crrate_button" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="25dp">
+
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
+
+                <TableRow android:background="@color/blue">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight="4"
+                        android:padding="10dp"
+                        android:text="@string/schedule_days"
+                        android:textColor="@color/white"
+                        android:textSize="14sp">
+
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight="4"
+                        android:padding="10dp"
+                        android:text="@string/schedule_PICKUP"
+                        android:textColor="@color/white"
+                        android:textSize="14sp">
+
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight="4"
+                        android:padding="10dp"
+                        android:text="@string/DROPOFF"
+                        android:textColor="@color/white"
+                        android:textSize="14sp">
+
+                    </TextView>
+
+
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight="4"
+                        android:padding="10dp"
+                        android:text="Monday"
+                        android:textColor="@color/black"
+                        android:textSize="14sp">
+
+                    </TextView>
+
+                    <Button
+                        android:id="@+id/mon_pickup"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight="4"
+                        android:padding="10dp"
+                        android:text="8:30 a.m"
+                        android:textColor="@color/black"
+                        android:textSize="12sp"
+                        android:onClick="mon_pickup">
+
+                    </Button>
+
+                    <Button
+                        android:id="@+id/mon_dropoff"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight="4"
+                        android:padding="10dp"
+                        android:text="2:30 p.m"
+                        android:textColor="@color/black"
+                        android:textSize="12sp"
+                        android:onClick="mon_dropoff">
+
+                    </Button>
+
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight="4"
+                        android:padding="10dp"
+                        android:text="Tuesday"
+                        android:textColor="@color/black"
+                        android:textSize="14sp">
+
+                    </TextView>
+
+                    <Button
+                        android:layout_width="0dp"
+                        android:id="@+id/tue_pickup"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight="4"
+                        android:padding="10dp"
+                        android:text="8:30 a.m"
+                        android:textColor="@color/black"
+                        android:textSize="12sp"
+                        android:onClick="tue_pickup">
+
+                    </Button>
+
+                    <Button
+                        android:layout_width="0dp"
+                        android:id="@+id/tue_dropoff"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight="4"
+                        android:padding="10dp"
+                        android:text="2:30 p.m"
+                        android:textColor="@color/black"
+                        android:textSize="12sp"
+                        android:onClick="tue_dropoff">
+
+                    </Button>
+
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight="4"
+                        android:padding="10dp"
+                        android:text="Wednesday"
+                        android:textColor="@color/black"
+                        android:textSize="14sp">
+
+                    </TextView>
+
+                    <Button
+                        android:layout_width="0dp"
+                        android:id="@+id/wed_pickup"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight="4"
+                        android:padding="10dp"
+                        android:text="8:30 a.m"
+                        android:textColor="@color/black"
+                        android:textSize="12sp"
+                        android:onClick="wed_pickup">
+
+                    </Button>
+
+                    <Button
+                        android:layout_width="0dp"
+                        android:id="@+id/wed_dropoff"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight="4"
+                        android:padding="10dp"
+                        android:text="2:30 p.m"
+                        android:textColor="@color/black"
+                        android:textSize="12sp"
+                        android:onClick="wed_dropoff">
+
+                    </Button>
+
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight="4"
+                        android:padding="10dp"
+                        android:text="Thursday"
+                        android:textColor="@color/black"
+                        android:textSize="14sp">
+
+                    </TextView>
+
+                    <Button
+                        android:layout_width="0dp"
+                        android:id="@+id/thu_pickup"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight="4"
+                        android:padding="10dp"
+                        android:text="8:30 a.m"
+                        android:textColor="@color/black"
+                        android:textSize="12sp"
+                        android:onClick="thu_pickup">
+
+                    </Button>
+
+                    <Button
+                        android:layout_width="0dp"
+                        android:id="@+id/thu_dropoff"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight="4"
+                        android:padding="10dp"
+                        android:text="2:30 p.m"
+                        android:textColor="@color/black"
+                        android:textSize="12sp"
+                        android:onClick="thu_dropoff">
+
+                    </Button>
+
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight="4"
+                        android:padding="10dp"
+                        android:text="Friday"
+                        android:textColor="@color/black"
+                        android:textSize="14sp">
+
+                    </TextView>
+
+                    <Button
+                        android:layout_width="0dp"
+                        android:id="@+id/fri_pickup"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight="4"
+                        android:padding="10dp"
+                        android:text="8:30 a.m"
+                        android:textColor="@color/black"
+                        android:textSize="12sp"
+                        android:onClick="fri_pickup">
+
+                    </Button>
+
+                    <Button
+                        android:layout_width="0dp"
+                        android:id="@+id/fri_dropoff"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight="4"
+                        android:padding="10dp"
+                        android:text="2:30 p.m"
+                        android:textColor="@color/black"
+                        android:textSize="12sp"
+                        android:onClick="fri_dropoff">
+
+                    </Button>
+
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight="4"
+                        android:padding="10dp"
+                        android:text="Saturday"
+                        android:textColor="@color/black"
+                        android:textSize="14sp">
+
+                    </TextView>
+
+                    <Button
+                        android:layout_width="0dp"
+                        android:id="@+id/sat_pickup"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight="4"
+                        android:padding="10dp"
+                        android:text="8:30 a.m"
+                        android:textColor="@color/black"
+                        android:textSize="12sp"
+                        android:onClick="sat_pickup">
+
+                    </Button>
+
+                    <Button
+                        android:layout_width="0dp"
+                        android:id="@+id/sat_dropoff"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight="4"
+                        android:padding="10dp"
+                        android:text="2:30 p.m"
+                        android:textColor="@color/black"
+                        android:textSize="12sp"
+                        android:onClick="sat_dropoff">
+
+                    </Button>
+
+                </TableRow>
+
+            </TableLayout>
+
+            <TextView
+                android:id="@+id/info_schedule"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="@color/colorPrimary"
+                android:fontFamily="@font/open_sans"
+                android:text="@string/schedule_info"
+                android:textColor="@color/grey"
+                android:textSize="12sp" />
+
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                android:background="@color/black">
+
+            </View>
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="2dp"
+                android:onClick="saveSchedule"
+                android:text="@string/schedule_save"
+                android:textColor="@color/white"
+                android:textSize="17sp"
+                app:backgroundTint="#008000"
+                app:cornerRadius="16dp"
+                app:elevation="5dp"
+                app:icon="@drawable/ic_baseline_done_24"
+                app:iconGravity="textStart">
+
+            </com.google.android.material.button.MaterialButton>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</ScrollView>
